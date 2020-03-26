@@ -4,7 +4,6 @@ import {PointActionButton} from './components/buttons.js';
 import {CheckPoint} from './components/taskPoints.js';
 
 
-
 class ToDoList extends React.Component {
 
   constructor (props) {
@@ -35,7 +34,10 @@ class ToDoList extends React.Component {
   }
 
   render() {
-    const listItems = this.state.todoList.map((point, num) => <CheckPoint point={point} key={num.toString()} onClick={this.deletePoint} />);
+    const listItems = this.state.todoList.map(
+      (point, num) =>
+      <CheckPoint point={point} key={num.toString()} onClick={this.deletePoint} />
+    );
     return (
       <div>
         <input type="text" value={this.state.userInput} onChange={this.handleUserInput}/>
