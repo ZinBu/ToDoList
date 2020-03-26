@@ -1,17 +1,53 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+import {PointActionButton} from './components/buttons.js';
+import {CheckPoint} from './components/taskPoints.js';
+
+
+
+class ToDoList extends React.Component {
+
+  constructor (props) {
+    super(props);
+    this.state = {
+      todoList: [],
+      userInput: ''
+    };
+    this.addNewPoint = this.addNewPoint.bind(this);
+    this.deletePoint = this.deletePoint.bind(this);
+    this.handleUserInput = this.handleUserInput.bind(this);
+  }
+
+  addNewPoint(event) {
+    let updatedToDoList = this.state.todoList;
+    updatedToDoList.push(this.state.userInput);
+    this.setState({todoList: updatedToDoList});
+  }
+
+  deletePoint(event) {
+    let updatedToDoList = this.state.todoList;
+    updatedToDoList.pop();
+    this.setState({todoList: updatedToDoList});
+  }
+
+  handleUserInput(event) {
+    this.setState({userInput: event.target.value});
+  }
+
+  render() {
+    const listItems = this.state.todoList.map((point, num) => <CheckPoint point={point} key={num.toString()} onClick={this.deletePoint} />);
+    return (
+      <div>
+        <input type="text" value={this.state.userInput} onChange={this.handleUserInput}/>
+        <PointActionButton name="Add point" onClick={this.addNewPoint} />
+        <ul>{listItems}</ul>
+      </div>
+    );
+  }
+}
+
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  <ToDoList />,
   document.getElementById('root')
 );
-
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
