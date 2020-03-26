@@ -8,7 +8,7 @@ export const CheckPoint = (props) => {
       <div>
         <li>
           {props.point}
-          <PointActionButton name="Delete point" onClick={props.onClick} />
+          <PointActionButton name="Delete point" onClick={(e) => props.onClick(Number.parseInt(props.index))} />
         </li>
       </div>
     );
@@ -17,5 +17,6 @@ export const CheckPoint = (props) => {
 
 CheckPoint.propTypes = {
   onClick: PropTypes.func.isRequired,
-  point: PropTypes.string.isRequired
+  point: PropTypes.string.isRequired,
+  index: PropTypes.string.isRequired
 };
