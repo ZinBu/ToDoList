@@ -1,0 +1,70 @@
+body {
+	font-family: Helvetica, Arial, sans-serif;
+  text-align: center;
+  overflow: hidden
+}
+
+div .main-wrapper {
+  height: 100vh;
+  padding: 150px;
+  background: linear-gradient(180deg, #1b2631, #1b2631, #5f2731);
+}
+
+div .div-button {
+  margin-left: 250px;
+}
+
+li {
+  text-align: left;
+  color: white;
+}
+
+li:hover {
+  opacity: 70%;
+}
+
+input {
+  border-image: linear-gradient(180deg, #ff3000, #ed0200, #ff096c, #d50082);
+  padding: 15px 30px;
+}
+
+#help-text {
+  min-height: 30px;
+  color: #d50082;
+}
+
+button {
+  background-color: rgba(255,255,255,0);
+  text-decoration: none;
+  outline: none;
+  color: white;
+  display: inline-block;
+  position: relative;
+  padding: 15px 30px;
+  border: 1px solid;
+  border-image: linear-gradient(180deg, #ff3000, #ed0200, #ff096c, #d50082);
+  border-image-slice: 1;
+  margin: 10px 20px;   font-family: 'Montserrat', sans-serif;
+  text-transform: uppercase;
+  overflow: hidden;
+  letter-spacing: 2px;
+  transition: .8s cubic-bezier(.165,.84,.44,1);
+}
+button:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 0;
+  width: 100%;
+  z-index: -1;
+  color: white;
+  background: linear-gradient(180deg, #ff3000, #ed0200, #ff096c, #d50082);
+  transition: .8s cubic-bezier(.165,.84,.44,1);
+}
+button:hover {background: #d50082; opacity: 80%;}
+button:hover:before {
+  bottom: 0%;
+  top: auto;
+  height: 100%;
+}
